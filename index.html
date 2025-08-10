@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Analyst Agent - Sample Output</title>
+    <style>
+        body {
+            font-family: 'Monaco', 'Consolas', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            padding: 20px;
+            line-height: 1.4;
+        }
+        .terminal {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        .query-section {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+        .query-header {
+            color: #ffff00;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .separator {
+            color: #666;
+            margin: 5px 0;
+        }
+        .tools-used {
+            color: #00ffff;
+            margin: 10px 0;
+        }
+        .analysis {
+            color: #00ff00;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .details {
+            color: #ff9900;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .title {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            text-decoration: underline;
+        }
+        .processing {
+            color: #888;
+            font-style: italic;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="title">=== Financial Analyst Agent Demo Output ===</div>
+        
+        <div class="query-section">
+            <div class="query-header">Query 1: What was Apple's revenue last year?</div>
+            <div class="separator">--------------------------------------------------</div>
+            <div class="processing">Processing query: What was Apple's revenue last year?</div>
+            <div class="processing">Parsed query: Company=Apple, Metrics=['revenue']</div>
+            <div class="processing">Using RAG tool...</div>
+            <div class="tools-used">Tools used: RAG</div>
+            
+            <div class="analysis">Analysis:
+Analysis for query: 'What was Apple's revenue last year?'
+Company: Apple
+Found 3 relevant historical documents
+From Apple 2025: Apple Inc. reported total net sales of $412.8 billion for fiscal year 2025, 
+compared to $391.0 billion in 2024. Net income was $101.2 billion, or $6.45 per diluted share.
+The company's iPhone revenue was $215.3 billion, Services revenue was $102.1 billion...</div>
+        </div>
+
+        <div class="query-section">
+            <div class="query-header">Query 2: What is Microsoft's current stock price today?</div>
+            <div class="separator">--------------------------------------------------</div>
+            <div class="processing">Processing query: What is Microsoft's current stock price today?</div>
+            <div class="processing">Parsed query: Company=Microsoft, Metrics=['stock_price']</div>
+            <div class="processing">Using web search tool...</div>
+            <div class="tools-used">Tools used: WebSearch</div>
+            
+            <div class="analysis">Analysis:
+Analysis for query: 'What is Microsoft's current stock price today?'
+Company: Microsoft
+Current stock price: $445.32 (Change: 3.21%)</div>
+            
+            <div class="details">Detailed Results:
+  Current Stock: $445.32 (3.21%)
+  Volume: 22,156,789
+  Last Updated: 2025-08-09
+  Note: Mock data - replace with real API</div>
+        </div>
+
+        <div class="query-section">
+            <div class="query-header">Query 3: Compare Apple's revenue to its current stock price</div>
+            <div class="separator">--------------------------------------------------</div>
+            <div class="processing">Processing query: Compare Apple's revenue to its current stock price</div>
+            <div class="processing">Parsed query: Company=Apple, Metrics=['revenue', 'stock_price']</div>
+            <div class="processing">Using RAG tool...</div>
+            <div class="processing">Using web search tool...</div>
+            <div class="tools-used">Tools used: RAG, WebSearch</div>
+            
+            <div class="analysis">Analysis:
+Analysis for query: 'Compare Apple's revenue to its current stock price'
+Company: Apple
+Current stock price: $195.67 (Change: -1.84)
+Found 2 relevant historical documents
+From Apple 2025: Apple Inc. reported total net sales of $412.8 billion for fiscal year 2025, 
+compared to $391.0 billion in 2024. Net income was $101.2 billion, or $6.45 per diluted share.
+The company's iPhone revenue was $215.3 billion, Services revenue was $102.1 billion...</div>
+            
+            <div class="details">Detailed Results:
+  Current Stock: $195.67 (-0.93%)
+  Annual Revenue: $412.8 billion (2025)
+  Revenue vs Market Cap Context: With ~15.2B shares outstanding at $195.67/share, 
+  market cap is ~$2.97 trillion, representing ~7.2x revenue multiple</div>
+        </div>
+
+        <div class="query-section">
+            <div class="query-header">Query 4: Calculate the P/E ratio for Apple based on its latest earnings</div>
+            <div class="separator">--------------------------------------------------</div>
+            <div class="processing">Processing query: Calculate the P/E ratio for Apple based on its latest earnings</div>
+            <div class="processing">Parsed query: Company=Apple, Metrics=['pe_ratio']</div>
+            <div class="processing">Using RAG tool...</div>
+            <div class="processing">Using web search tool...</div>
+            <div class="processing">Using calculator tool...</div>
+            <div class="tools-used">Tools used: RAG, WebSearch, Calculator</div>
+            
+            <div class="analysis">Analysis:
+Analysis for query: 'Calculate the P/E ratio for Apple based on its latest earnings'
+Company: Apple
+Current stock price: $195.67 (Change: -1.84)
+Found 2 relevant historical documents
+From Apple 2025: Apple Inc. reported total net sales of $412.8 billion for fiscal year 2025, 
+compared to $391.0 billion in 2024. Net income was $101.2 billion, or $6.45 per diluted share.
+The company's iPhone revenue was $215.3 billion, Services revenue was $102.1 billion...
+Key financial metrics:
+- Eps: 6.45
+- Pe Ratio: 30.34
+- Profit Margin: 24.51
+- Market Cap: 2,974,188 (millions)</div>
+            
+            <div class="details">Detailed Results:
+  Current Stock: $195.67 (-0.93%)
+  Calculations: {
+    "eps": 6.45,
+    "pe_ratio": 30.34,
+    "profit_margin": 24.51,
+    "market_cap": 2974188.0
+  }
+  
+Financial Analysis Summary:
+• P/E Ratio of 30.34 suggests premium valuation
+• Strong profit margin of 24.51% indicates efficient operations  
+• EPS of $6.45 shows solid per-share profitability
+• Market cap of ~$2.97 trillion reflects investor confidence</div>
+        </div>
+
+        <div class="query-section">
+            <div class="query-header">Query 5: What was Tesla's revenue growth from 2024 to 2025?</div>
+            <div class="separator">--------------------------------------------------</div>
+            <div class="processing">Processing query: What was Tesla's revenue growth from 2024 to 2025?</div>
+            <div class="processing">Parsed query: Company=Tesla, Metrics=['revenue', 'growth']</div>
+            <div class="processing">Using RAG tool...</div>
+            <div class="processing">Using calculator tool...</div>
+            <div class="tools-used">Tools used: RAG, Calculator</div>
+            
+            <div class="analysis">Analysis:
+Analysis for query: 'What was Tesla's revenue growth from 2024 to 2025?'
+Company: Tesla
+Found 2 relevant historical documents
+From Tesla 2025: Tesla Inc. reported total revenue of $118.7 billion for fiscal year 2025,
+compared to $96.8 billion in 2024. Net income was $19.4 billion, or $5.87 per diluted share.
+Automotive revenue was $99.2 billion, Energy generation and storage revenue was $9.8 billion...
+Key financial metrics:
+- Revenue Growth: 22.59%
+- Profit Margin: 16.34%
+- Market Cap: 2,148,847 (millions)</div>
+            
+            <div class="details">Detailed Results:
+  2024 Revenue: $96.8 billion
+  2025 Revenue: $118.7 billion
+  Growth Rate: 22.59% year-over-year
+  Vehicle Deliveries: 2.15 million units (up from ~1.81M in 2024)</div>
+        </div>
+
+        <div class="query-section">
+            <div class="query-header">Query 6: How does Microsoft's 2025 cloud revenue compare to 2024?</div>
+            <div class="separator">--------------------------------------------------</div>
+            <div class="processing">Processing query: How does Microsoft's 2025 cloud revenue compare to 2024?</div>
+            <div class="processing">Parsed query: Company=Microsoft, Metrics=['revenue']</div>
+            <div class="processing">Using RAG tool...</div>
+            <div class="processing">Using calculator tool...</div>
+            <div class="tools-used">Tools used: RAG, Calculator</div>
+            
+            <div class="analysis">Analysis:
+Analysis for query: 'How does Microsoft's 2025 cloud revenue compare to 2024?'
+Company: Microsoft
+Found 2 relevant historical documents
+From Microsoft 2025: Microsoft Corporation reported revenue of $278.4 billion for fiscal year 2025,
+an increase of 13.6% from $245.1 billion in 2024. Operating income was $124.7 billion.
+Intelligent Cloud revenue was $126.8 billion, representing 20% growth.
+Azure and other cloud services revenue grew by 28% year-over-year...
+Key financial metrics:
+- Revenue Growth: 13.60%
+- Cloud Revenue Growth: 20.00%
+- Profit Margin: 35.31%</div>
+            
+            <div class="details">Detailed Results:
+  2024 Intelligent Cloud: $105.3 billion
+  2025 Intelligent Cloud: $126.8 billion  
+  Cloud Growth Rate: 20.4% year-over-year
+  Azure Growth: 28% (accelerating cloud adoption)</div>
+        </div>
+
+        <div style="margin-top: 40px; color: #888; text-align: center;">
+            === End of Demo Output ===<br>
+            <small>Financial data updated to reflect 2024-2025 fiscal years. 
+            Stock prices are simulated for demo purposes. 
+            In production, this would use real-time financial APIs.</small>
+        </div>
+    </div>
+
+    <script>
+        // Add some dynamic effects to make it look more realistic
+        function typeEffect() {
+            const elements = document.querySelectorAll('.processing');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '0.6';
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                    }, 200);
+                }, index * 100);
+            });
+        }
+        
+        // Add blinking cursor effect
+        function addCursor() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .cursor::after {
+                    content: '█';
+                    animation: blink 1s infinite;
+                }
+                @keyframes blink {
+                    0%, 50% { opacity: 1; }
+                    51%, 100% { opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add cursor to last element
+            const lastAnalysis = document.querySelector('.query-section:last-of-type .details');
+            if (lastAnalysis) {
+                lastAnalysis.classList.add('cursor');
+            }
+        }
+        
+        // Run the effects when page loads
+        setTimeout(() => {
+            typeEffect();
+            addCursor();
+        }, 1000);
+        
+        // Add hover effects for interactivity
+        document.querySelectorAll('.query-section').forEach(section => {
+            section.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#0f0f0f';
+                this.style.transition = 'background-color 0.3s ease';
+            });
+            
+            section.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'transparent';
+            });
+        });
+    </script>
+</body>
+</html>
